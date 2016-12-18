@@ -68,19 +68,21 @@
    console.log(access_token);
    // gets users data (username, bio, follower counts, media, id, full name, profile pic)
    function get_data() {
+      var username;
+      var full_name;
+      var bio;
+      
       $.ajax ({  
          type: "GET",
          dataType: "jsonp",
          cache: false,
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
-            //console.log("success, data:" + JSON.stringify(data));    // EVERYTHING WORKS UP UNTIL HERE
-            //var data_P = JSON.parse(data);
-            console.log(data["data"]["username"]);
-           
+            var username = data["data"]["username"];
+            
          }
       });
-      return "success";
+      return username;
    }    
    </script>
 
