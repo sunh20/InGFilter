@@ -31,6 +31,7 @@
          type: "GET",
          dataType: "jsonp",
          cache: false,
+         crossDomain : true,
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
                                                              // EVERYTHING WORKS UP UNTIL HERE
