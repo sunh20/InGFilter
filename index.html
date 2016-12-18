@@ -27,8 +27,8 @@
          cache: false,
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
-            console.log(data.data.username);
-            
+            $('.name').text(data.data.username);
+            $('.tagline').text(data.data.bio);
          }
       });
       return username;
