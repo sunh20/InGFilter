@@ -22,21 +22,17 @@
 
    <script>
    function get_info(url) {
-      if (window.XMLHttpRequest) {  // code for IE7+, Firefox, Chrome, Opera, Safari
-        xhttp=new XMLHttpRequest();
-      } else {                      // code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-   }
-   xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-         return this.responseText;
-      }
-   }   
-   xhttp.open("GET", url, true);
-   xhttp.send();
+      var xhttp = new XMLHttpRequest(); 
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            return this.responseText;
+         }
+      }   
+      xhttp.open("GET", url, true);
+      xhttp.send();
    }
       
-   get_info("http://stackoverflow.com/").innerHTML;
+   get_info("https://api.instagram.com/v1/users/self/?access_token=" + access_token).innerHTML;
 
    </script>
 
