@@ -9,8 +9,7 @@
    <p>~*~Check your Instagram stats~*~</p>
 
    <p><a href = 
-      "https://www.instagram.com/oauth/authorize/?client_id=cc4d3923bd05428597ec55a70b5680fa&redirect_uri=
-                                                                     http://samsamsun.me&response_type=token">
+      "https://www.instagram.com/oauth/authorize/?client_id=cc4d3923bd05428597ec55a70b5680fa&redirect_uri=http://samsamsun.me&response_type=token">
       Authenticate</a></p>
    
    <script>
@@ -29,7 +28,7 @@
       cache: false,
       url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
       success: function(data) {
-         console.log("success");
+         console.log("success, AT:" + access_token);
       }
    });
           
