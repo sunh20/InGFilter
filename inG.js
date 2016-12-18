@@ -1,10 +1,6 @@
 (function() {
 	"use strict";
 
-	// gets a users access token, stores to access_token      
-   var access_token = window.location.href.split("=")[1]; // 
-   console.log(access_token);
-
    // gets users data (username, bio, follower counts, media, id, full name, profile pic)
    // function get_data() {
    //    $.ajax ({  
@@ -21,6 +17,14 @@
    //    });
    // }
 
+   var access_token = window.location.href.split("=")[1]; // 
+   console.log(access_token);
+
+   window.onload = function() {
+      // gets a users access token, stores to access_token      
+      document.getElementById("search").onclick = get_data;
+   };
+
    function get_data() {
       var request = new XMLHttpRequest();
       request.onload = fetchInfo;
@@ -32,7 +36,7 @@
    function fetchInfo() {
       if(this.status == 200) {
          var data = JSON.parse(this.responseText);
-         console.log(data);
+         console.log("hello");
       } else {
          console.log("error");
       }
