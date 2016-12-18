@@ -29,14 +29,16 @@
             console.log("check 1");
             $('.name').text(data.data.username);
             $('.bio').text(data.data.bio);
+            $('.realName').text(data.data.full_name);
          }
       });
       return null;
    }    
    </script>
 
-   <p>Username: </p><p class="name"></p>
-   <p class="bio">Bio: </p><p class="bio"></p>
+   <p>Welcome </p><b class="realName"></b>
+   <p>Username: </p><b class="name"></b>
+   <p>Bio: </p><b class="bio"></b>
 
    <button type="button" onclick="getUserData()">Get user info</button>
 
