@@ -22,7 +22,7 @@
    //    console.log("hello");
    // }
 
-      gets users data (username, bio, follower counts, media, id, full name, profile pic)
+   //gets users data (username, bio, follower counts, media, id, full name, profile pic)
    function get_data() {
       $.ajax ({  
          type: "GET",
