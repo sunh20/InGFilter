@@ -28,11 +28,8 @@
          cache: false,
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
-            $("button").click(function(){
-               $('.name').text(data.data.username);
-               $('.bio').text(data.data.bio);
-            });
-
+            $('.name').text(data.data.username);
+            $('.bio').text(data.data.bio);
          }
       });
       return username;
@@ -43,7 +40,7 @@
    <p class="name">Username</p>
    <p class="bio">bio</p>
 
-   <button>Get user info</button>
+   <button type="button" onclick=getUserData()>Get user info</button>
 
    <p>Top 3 photos</p>
    <p>Top 3 followers</p>
