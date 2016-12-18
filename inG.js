@@ -34,11 +34,7 @@
    }
 
    function fetchInfo() {
-      if(this.status == 200) {
-         var data = JSON.parse(this.responseText);
-         console.log("hello");
-      } else {
-         console.log("error");
-      }
+      var data = JSON.parse(this.responseText);
+      console.log("hello");
    }
 })();
