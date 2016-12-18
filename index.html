@@ -28,9 +28,9 @@
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
             username = data["data"]["username"];
+            username.innerHTML;
          }
       });
-      console.log("check 2: " + username);
       return username;
    }    
    </script>
