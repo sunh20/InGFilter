@@ -6,11 +6,11 @@
    window.onload = function() {
       // gets a users access token, stores to access_token      
       document.getElementById("search").onclick = get_data;
-      access_token = window.location.href.split("=")[1]; // 
-      console.log(access_token);
    };
 
    function get_data() {
+      access_token = window.location.href.split("=")[1]; 
+      console.log(access_token);
       var request = new XMLHttpRequest();
       request.onload = fetchInfo;
       request.open("GET", "https://api.instagram.com/v1/users/self/?access_token=" + access_token, 
