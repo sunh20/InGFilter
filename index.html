@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
    <head>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -12,7 +12,6 @@
    <p><a href = 
       "https://www.instagram.com/oauth/authorize/?client_id=cc4d3923bd05428597ec55a70b5680fa&amp;redirect_uri=http://samsamsun.me&amp;response_type=token">
       Authenticate</a></p>
-   <!--
    <script>
    // gets a users access token, stores to access_token      
    var access_token = window.location.href.split("=")[1]; // 
@@ -34,12 +33,60 @@
       });
       return "success";
    }    
-   </script>
-   -->
-
+   </script>   
    <p id="user_info">Your info</p>
 
    <button id="search">Get user info</button>
+
+   <p>Top 3 photos</p>
+   <p>Top 3 followers</p>
+   <p>Follow each other</p>
+  
+
+</body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   </head>
+<body>
+
+   <h1>InGFilter</h1>   
+   <p>~*~Check your Instagram stats~*~</p>
+
+   <p><a href = 
+      "https://www.instagram.com/oauth/authorize/?client_id=cc4d3923bd05428597ec55a70b5680fa&redirect_uri=http://samsamsun.me&response_type=token">
+      Authenticate</a></p>
+   
+   <script>
+   // gets a users access token, stores to access_token      
+   var access_token = window.location.href.split("=")[1]; // 
+   console.log(access_token);
+   // gets users data (username, bio, follower counts, media, id, full name, profile pic)
+   function get_data() {
+      $.ajax ({  
+         type: "GET",
+         dataType: "jsonp",
+         cache: false,
+         url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
+         success: function(data) {
+            console.log("success, data:" + JSON.stringify(data));    // EVERYTHING WORKS UP UNTIL HERE
+            var data_P = JSON.parse(data);
+            console.log(data_P["username"]);
+           
+         }
+      });
+      return "success";
+   }    
+   </script>
+
+   <p id="user_info">Your info</p>
+
+   <button type="button" onclick="document.getElementById('user_info').innerHTML = get_data()">Get user info</button>
 
    <p>Top 3 photos</p>
    <p>Top 3 followers</p>
