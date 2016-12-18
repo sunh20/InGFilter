@@ -79,9 +79,10 @@
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
             username = data["data"]["username"];
-            
+            console.log("check: " + username);
          }
       });
+      console.log("check: " + username);
       return username;
    }    
    </script>
