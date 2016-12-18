@@ -10,9 +10,9 @@
       "https://www.instagram.com/oauth/authorize/?client_id=cc4d3923bd05428597ec55a70b5680fa&redirect_uri=http://samsamsun.me&response_type=code">
       Authenticate</a></p>
    
-   <p id="address"></p>
    <script>
-   document.getElementById("address").innerHTML = "Page location is " + window.location.href;
+   var access_token = window.location.href.split("=")[1]; // 
+   console.log(access_token);   
    </script>
    
 
