@@ -20,27 +20,25 @@
    
    // gets users data (username, bio, follower counts, media, id, full name, profile pic)
    function getUserData() {
-      var username;
-      
       $.ajax ({  
          type: "GET",
          dataType: "jsonp",
          cache: false,
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
+            console.log("check 1");
             $('.name').text(data.data.username);
             $('.bio').text(data.data.bio);
          }
       });
-      return username;
+      return null;
    }    
    </script>
 
-   <p id="user_info">Your info</p>
-   <p class="name">Username</p>
-   <p class="bio">bio</p>
+   <p>Username: </p><p class="name"></p>
+   <p class="bio">Bio: </p><p class="bio"></p>
 
-   <button type="button" onclick=getUserData()>Get user info</button>
+   <button type="button" onclick="getUserData()">Get user info</button>
 
    <p>Top 3 photos</p>
    <p>Top 3 followers</p>
