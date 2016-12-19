@@ -1,5 +1,6 @@
 .media {
-	display: inline-block;
+	/*display: inline-block;*/
+	float: left;
 	height: 320px;
 	width: 320px;
 }
