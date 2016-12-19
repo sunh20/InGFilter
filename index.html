@@ -49,7 +49,7 @@
          success: function(data) {
             console.log("sucessfully retrived media");
             for (var i = 0; i < 3; i++) {
-               console.log(data.data[i].type.toString());
+               console.log(data.data[i].type === "video");
               // if (data.data[i].type.toString().equals("video")) {
               //    $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><video src='" + data.data[i].videos.low_resolution.url + "'></video></a></li>");
               // } else { 
