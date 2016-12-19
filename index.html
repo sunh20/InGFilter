@@ -33,7 +33,7 @@
             $('.name').text(data.data.username);
             $('.bio').text(data.data.bio);
             $('.realName').text(data.data.full_name);
-            $(".pic").append("<li><img width="128" height="128" src='" + data.data.profile_picture + "'></img></a></li>");
+            $(".pic").append("<li><img src='" + data.data.profile_picture + "'></img></a></li>");
          }
       });
       return null;
