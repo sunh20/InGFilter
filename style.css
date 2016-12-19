@@ -1,5 +1,5 @@
 .media {
-	display: inline;
+	display: inline-block;
 	height: 320px;
 	width: 320px;
 }
