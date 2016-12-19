@@ -31,9 +31,9 @@
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
             console.log("sucessfully retrived user data");
-            $('.name').text(data.data.username);
-            $('.bio').text(data.data.bio);
-            $('.realName').text(data.data.full_name);
+            $('#name').text(data.data.username);
+            $('#bio').text(data.data.bio);
+            $('#realName').text(data.data.full_name);
             $("#pic").append("<div class='media'><img src='" + data.data.profile_picture + "'></img></a></div>");
          }
       });
