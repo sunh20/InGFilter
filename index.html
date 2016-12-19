@@ -49,7 +49,7 @@
          success: function(data) {
             console.log("sucessfully retrived last 3 media");
             for (var i = 0; i < 3; i++) {
-               if (data.data[i].type.equals("video")) {
+               if (data.data[i].type.toString().equals("video")) {
                   $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><video src='" + data.data[i].videos.low_resolution.url + "'></video></a></li>");
                } else { 
                   $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
