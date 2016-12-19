@@ -4,7 +4,7 @@
    <head>
       <style>
       
-      .image .vid {
+      .media {
          display: inline;
       }
       
@@ -40,7 +40,7 @@
             $('.name').text(data.data.username);
             $('.bio').text(data.data.bio);
             $('.realName').text(data.data.full_name);
-            $("#pic").append("<div class='image'><img src='" + data.data.profile_picture + "'></img></a></div>");
+            $("#pic").append("<div class='media'><img src='" + data.data.profile_picture + "'></img></a></div>");
          }
       });
       return null;
@@ -59,9 +59,9 @@
                console.log("sucessfully retrived media");
                for (var i = 0; i < 10; i++) {
                   if (data.data[i].type === "video") {
-                     $("#media").append("<div class='image'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='vid' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
+                     $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                   } else { 
-                     $("#media").append("<div class='image'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
+                     $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
                   }
                }
             }
@@ -81,7 +81,7 @@
    <button type="button" onclick="getUserData(); this.style.display = 'none'">Load information</button>
 
    <button type="button" onclick="getRecentMedia()">Last 10 Photos</button>
-   <div id="media"></div>
+   <div id="tenpics"></div>
    
    <p>Top 3 photos</p>
    <p>Top 3 followers</p>
