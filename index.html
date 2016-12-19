@@ -59,7 +59,7 @@
                console.log("sucessfully retrived media");
                for (var i = 0; i < 10; i++) {
                   if (data.data[i].type === "video") {
-                     $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay src='" + data.data[i].videos.low_resolution.url + "'></video></a></li>");
+                     $(".media").append("<div><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                   } else { 
                      $(".media").append("<div><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
                   }
