@@ -26,7 +26,7 @@
          cache: false,
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
-            console.log("check 1");
+            console.log("sucessfully retrived data");
             $('.name').text(data.data.username);
             $('.bio').text(data.data.bio);
             $('.realName').text(data.data.full_name);
@@ -34,13 +34,31 @@
          }
       });
       return null;
-   }    
+   }
+   
+   // get recent media
+   function getRecentMedia() {
+      $.ajax ({  
+         type: "GET",
+         dataType: "jsonp",
+         cache: false,
+         url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
+         success: function(data) {
+            console.log("sucessfully retrived data");
+            $('.name').text(data.data.username);
+            $('.bio').text(data.data.bio);
+            $('.realName').text(data.data.full_name);
+            $(".pic").append("<li><img src='" + data.data.profile_picture + "'></img></a></li>");
+         }
+      });
+      return null;
+   }
    </script>
 
    <p>Welcome <b class="realName"></b>!</p>
    <p>Username: <b class="name"></b></p>
    <p>Bio: <b class="bio"></b></p>
-   <div class = "pic"></div>
+   <p class="pic"></p>
 
    <button type="button" onclick="getUserData(); this.style.display = 'none'">Load information</button>
 
