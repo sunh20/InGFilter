@@ -40,7 +40,7 @@
             $('.name').text(data.data.username);
             $('.bio').text(data.data.bio);
             $('.realName').text(data.data.full_name);
-            $(".pic").append("<div><img src='" + data.data.profile_picture + "'></img></a></div>");
+            $("#pic").append("<div><img src='" + data.data.profile_picture + "'></img></a></div>");
          }
       });
       return null;
@@ -76,7 +76,7 @@
    <p>Welcome <b class="realName"></b>!</p>
    <p>Username: <b class="name"></b></p>
    <p>Bio: <b class="bio"></b></p>
-   <p class="pic"></p>
+   <p id="pic"></p>
 
    <button type="button" onclick="getUserData(); this.style.display = 'none'">Load information</button>
 
