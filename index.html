@@ -17,6 +17,8 @@
    <script>
    // gets a users access token, stores to access_token      
    var access_token = window.location.href.split("=")[1];
+   // get recent media only want this to run once
+   var hasRun = false;
    if (access_token != null) {
       console.log("Authentication complete");  
       console.log(access_token); // for debugging
@@ -40,8 +42,6 @@
       return null;
    }
 
-   // get recent media only want this to run once
-   var hasRun = false;
    function getRecentMedia() {
       if (!hasRun) {
          $.ajax ({  
