@@ -39,24 +39,28 @@
       return null;
    }
 
-   // get recent media
+   // get recent media only want this to run once
+   var hasRun = false;
    function getRecentMedia() {
-      $.ajax ({  
-         type: "GET",
-         dataType: "jsonp",
-         cache: false,
-         url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
-         success: function(data) {
-            console.log("sucessfully retrived media");
-            for (var i = 0; i < 3; i++) {
-               if (data.data[i].type === "video") {
-                  $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay src='" + data.data[i].videos.low_resolution.url + "'></video></a></li>");
-               } else { 
-                  $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+      if (!hasRun) {
+         $.ajax ({  
+            type: "GET",
+            dataType: "jsonp",
+            cache: false,
+            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
+            success: function(data) {
+               console.log("sucessfully retrived media");
+               for (var i = 0; i < 3; i++) {
+                  if (data.data[i].type === "video") {
+                     $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay src='" + data.data[i].videos.low_resolution.url + "'></video></a></li>");
+                  } else { 
+                     $(".media").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+                  }
                }
             }
-         }
-      });
+         });
+      }
+      hasRun = true;
       return null;
    }
 
