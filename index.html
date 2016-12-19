@@ -4,7 +4,7 @@
    <head>
       <style>
       
-      div > div {
+      #media > div {
          display: inline;
       }
       
@@ -59,9 +59,9 @@
                console.log("sucessfully retrived media");
                for (var i = 0; i < 10; i++) {
                   if (data.data[i].type === "video") {
-                     $(".media").append("<div><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
+                     $("#media").append("<div><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                   } else { 
-                     $(".media").append("<div><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
+                     $("#media").append("<div><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
                   }
                }
             }
@@ -81,7 +81,7 @@
    <button type="button" onclick="getUserData(); this.style.display = 'none'">Load information</button>
 
    <button type="button" onclick="getRecentMedia()">Last 10 Photos</button>
-   <div class="media"></div>
+   <div id="media"></div>
    
    <p>Top 3 photos</p>
    <p>Top 3 followers</p>
