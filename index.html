@@ -51,7 +51,7 @@
             url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
             success: function(data) {
                console.log("sucessfully retrived media");
-               for (var i = 0; i < 10; i++) {
+               for (var i = 0; i < data.data.length; i++) {
                   if (data.data[i].type === "video") {
                      $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                   } else { 
@@ -71,7 +71,7 @@
    <p>Username: <b id="name"></b></p>
    <p>Bio: <b id="bio"></b></p>
    <p id="pic"></p>
-   
+
    <button type="button" onclick="getUserData(); this.style.display = 'none'">Load information</button>
 
    <button type="button" onclick="getRecentMedia()">Last 10 Photos</button>
