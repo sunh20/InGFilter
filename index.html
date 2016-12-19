@@ -17,7 +17,10 @@
    // gets a users access token, stores to access_token      
    var access_token = window.location.href.split("=")[1];
    // console.log(access_token); // for debugging
-   
+   if (access_token != null) {
+      document.write("Authentication complete");  
+   }
+      
    // gets users data (username, bio, follower counts, media, id, full name, profile pic)
    function getUserData() {
       $.ajax ({  
@@ -44,11 +47,8 @@
          cache: false,
          url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
          success: function(data) {
-            console.log("sucessfully retrived data");
-            $('.name').text(data.data.username);
-            $('.bio').text(data.data.bio);
-            $('.realName').text(data.data.full_name);
-            $(".pic").append("<li><img src='" + data.data.profile_picture + "'></img></a></li>");
+            for (int
+            $(".media").append("<li><img src='" + data.data.profile_picture + "'></img></a></li>");
          }
       });
       return null;
@@ -62,6 +62,9 @@
 
    <button type="button" onclick="getUserData(); this.style.display = 'none'">Load information</button>
 
+   <p>Last 3 photos</p>
+   <p class="media"></p>
+   
    <p>Top 3 photos</p>
    <p>Top 3 followers</p>
    <p>Follow each other</p>
