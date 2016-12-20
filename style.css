@@ -12,6 +12,7 @@
 
 #scrollbar{
     overflow-x: scroll;
+    height: 320px;
     width: auto;
     white-space: nowrap;
 }
