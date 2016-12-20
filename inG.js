@@ -48,13 +48,25 @@
                   console.log("sucessfully retrived media");
                  // var totalLength = data.data.length;
                   var totalLength = 10;
+                  var items = {};
                   for (var i = 0; i < totalLength; i++) {
+                     items["" + i] = data.data[i].likes;
                      if (data.data[i].type === "video") {
                         $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                      } else { 
                         $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
                      }
                   }
+                  // Create items array
+                  items = Object.keys(dict).map(function(key) {
+                      return [key, dict[key]];
+                  });
+
+                  items.sort(function(first, second) {
+                      return second[1] - first[1];
+                  });
+
+                  console.log(items.slice(0, 3));
                }
             });
          }
