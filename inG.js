@@ -4,15 +4,16 @@
       var access_token;
 
       window.onload = function() {
-         // gets a users access token, stores to access_token      
          document.getElementById("load").onclick = getUserData;
          document.getElementById("recent").onclick = getRecentMedia;
       };
 
-         // gets a users access token, stores to access_token      
-      var access_token = window.location.href.split("=")[1];
-      // get recent media only want this to run once
+      // gets a users access token, stores to access_token      
+      access_token = window.location.href.split("=")[1];
+      
+      // get recent media, only want this to run once
       var hasRun = false;
+      
       if (access_token != null) {
          console.log("Authentication complete");  
          console.log(access_token); // for debugging
@@ -46,29 +47,32 @@
                url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
                success: function(data) {
                   console.log("sucessfully retrived media");
-                 // var totalLength = data.data.length;
-                  var totalLength = 10;
+                  var totalLength = data.data.length;
                   var dict = {};
+                  var top = 5;
+                  // inserts photo index and #likes into a map, displays only top 5
                   for (var i = 0; i < totalLength; i++) {
                      dict[i] = data.data[i].likes["count"];
-                     if (data.data[i].type === "video") {
-                        $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
-                     } else { 
-                        $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
+                     if (i < top) {
+                        if (data.data[i].type === "video") {
+                           $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
+                        } else { 
+                           $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
+                        }
                      }
                   }
-                  // Create items array
+                  // Create items array, sort, slice top three
                   var items = Object.keys(dict).map(function(key) {
                       return [key, dict[key]];
                   });
-
+                  
                   items.sort(function(first, second) {
                       return second[1] - first[1];
                   });
 
                   items = items.slice(0, 3);
 
-                  console.log(items);
+                  console.log("Top photo processing complete" + items);
 
                   for (var i = 0; i < items.length; i++) {
                      var index = items[i][0];
