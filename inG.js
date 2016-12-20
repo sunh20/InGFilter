@@ -31,9 +31,9 @@
                $('#bio').text(data.data.bio);
                $('#realName').text(data.data.full_name);
                $("#pic").append("<div'><img src='" + data.data.profile_picture + "'></img></a></div>");
+               this.style.display = 'none';
             }
          });
-         this.style.display = 'none';
          return null;
       }
 
