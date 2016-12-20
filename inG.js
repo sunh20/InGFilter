@@ -50,7 +50,7 @@
                   var totalLength = 10;
                   var dict = {};
                   for (var i = 0; i < totalLength; i++) {
-                     dict["" + i] = data.data[i].likes;
+                     dict["" + i] = data.data[i].likes["count"];
                      if (data.data[i].type === "video") {
                         $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                      } else { 
