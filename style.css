@@ -7,3 +7,9 @@
 #topphoto {
 	clear: both;
 }
+
+#scrollbar{
+    overflow-x: scroll;
+    width: auto;
+    white-space: nowrap;
+}
