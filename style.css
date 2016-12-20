@@ -1,9 +1,8 @@
 .media {
-	float: left;
 	height: 320px;
 	width: 320px;
 	border: 3px solid #FFFFFF;
-	white-space: nowrap;
+	display: inline-block;
 }
 
 #topphoto {
@@ -11,9 +10,9 @@
 }
 
 #recentpics {
+	width: auto;
+	height: 320px;
 	overflow-x: scroll;
 	overflow-y: hidden;
-	height: 320px;
-	width: auto;
 	white-space: nowrap;
 }
