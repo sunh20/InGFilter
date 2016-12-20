@@ -10,7 +10,7 @@
 	clear: both;
 }
 
-#scrollbar{
+#recentpics {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	height: 320px;
