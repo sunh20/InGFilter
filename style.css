@@ -3,3 +3,7 @@
 	height: 320px;
 	width: 320px;
 }
+
+#topphoto {
+	clear: both;
+}
