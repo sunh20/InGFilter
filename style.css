@@ -1,9 +1,7 @@
 .media {
-	display: inline
-	float: left;
-	height: 320px;
-	width: 320px;
-	border: 1px solid #FFFFFF
+ 	float: left;
+ 	height: 320px;
+ 	width: 320px;
 }
 
 #topphoto {
