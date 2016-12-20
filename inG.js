@@ -48,9 +48,9 @@
                   console.log("sucessfully retrived media");
                  // var totalLength = data.data.length;
                   var totalLength = 10;
-                  var items = {};
+                  var dict = {};
                   for (var i = 0; i < totalLength; i++) {
-                     items["" + i] = data.data[i].likes;
+                     dict["" + i] = data.data[i].likes;
                      if (data.data[i].type === "video") {
                         $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                      } else { 
@@ -58,7 +58,7 @@
                      }
                   }
                   // Create items array
-                  items = Object.keys(dict).map(function(key) {
+                  var items = Object.keys(dict).map(function(key) {
                       return [key, dict[key]];
                   });
 
