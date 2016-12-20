@@ -70,14 +70,14 @@
 
                   console.log(items);
 
-                  //under construction
-                  // items.forEach(function(i) {
-                  //    if (data.data[i].type === "video") {
-                  //       $("#topphoto").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
-                  //    } else { 
-                  //       $("#topphoto").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
-                  //    }
-                  // });
+                  for (var i = 0; i < items.length; i++) {
+                     var index = items[i][0];
+                     if (data.data[index].type === "video") {
+                        $("#topphoto").append("<div class='media'><a target='_blank' href='" + data.data[index].link + "'><video controls loop autoplay class='media' src='" + data.data[index].videos.low_resolution.url + "'></video></a></div>");
+                     } else { 
+                        $("#topphoto").append("<div class='media'><a target='_blank' href='" + data.data[index].link + "'><img src='" + data.data[index].images.low_resolution.url + "'></img></a></div>");
+                     }
+                  }
                }
             });
          }
