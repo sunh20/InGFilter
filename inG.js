@@ -50,7 +50,7 @@
                   var totalLength = 10;
                   var dict = {};
                   for (var i = 0; i < totalLength; i++) {
-                     dict["" + i] = data.data[i].likes["count"];
+                     dict[i] = data.data[i].likes["count"];
                      if (data.data[i].type === "video") {
                         $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                      } else { 
@@ -66,7 +66,18 @@
                       return second[1] - first[1];
                   });
 
-                  console.log(items.slice(0, 3));
+                  items = items.slice(0, 3);
+
+                  console.log(items);
+
+                  //under construction
+                  // items.forEach(function(i) {
+                  //    if (data.data[i].type === "video") {
+                  //       $("#topphoto").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
+                  //    } else { 
+                  //       $("#topphoto").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
+                  //    }
+                  // });
                }
             });
          }
