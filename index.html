@@ -14,73 +14,11 @@
    <p><a href = 
       "https://www.instagram.com/oauth/authorize/?client_id=cc4d3923bd05428597ec55a70b5680fa&redirect_uri=http://samsamsun.me&response_type=token">
       Authenticate</a></p>
-   
-   <!-- <script>
-   // gets a users access token, stores to access_token      
-   var access_token = window.location.href.split("=")[1];
-   // get recent media only want this to run once
-   var hasRun = false;
-   if (access_token != null) {
-      console.log("Authentication complete");  
-      console.log(access_token); // for debugging
-   }
-      
-   // gets users data (username, bio, follower counts, media, id, full name, profile pic)
-   function getUserData() {
-      $.ajax ({  
-         type: "GET",
-         dataType: "jsonp",
-         cache: false,
-         url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
-         success: function(data) {
-            console.log("sucessfully retrived user data");
-            $('#name').text(data.data.username);
-            $('#bio').text(data.data.bio);
-            $('#realName').text(data.data.full_name);
-            $("#pic").append("<div'><img src='" + data.data.profile_picture + "'></img></a></div>");
-         }
-      });
-      return null;
-   }
-
-   function getRecentMedia() {
-      if (!hasRun) {
-         $.ajax ({  
-            type: "GET",
-            dataType: "jsonp",
-            cache: false,
-            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
-            success: function(data) {
-               console.log("sucessfully retrived media");
-              // var totalLength = data.data.length;
-               var totalLength = 10;
-               for (var i = 0; i < totalLength; i++) {
-                  if (data.data[i].type === "video") {
-                     $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
-                  } else { 
-                     $("#tenpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></div>");
-                  }
-               }
-            }
-         });
-      }
-      hasRun = true;
-      return null;
-   }
-
-   </script>
--->
-
    <p>Welcome <b id="realName"></b>!</p>
    <p>Username: <b id="name"></b></p>
    <p>Bio: <b id="bio"></b></p>
    <p id="pic"></p>
 
-   <!--
-   <button id="load" onclick="getUserData(); this.style.display = 'none'">Load information</button>
-
-   <button id="recent" onclick="getRecentMedia()">Last 10 Photos</button>
--->
    <button id="load">Load information</button>
 
    <button id="recent">Recent Photos</button> 
