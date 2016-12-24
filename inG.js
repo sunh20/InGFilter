@@ -37,7 +37,8 @@
          });
          return null;
       }
-
+      
+      // gets all photos from user, shows recent and top photos
       function getRecentMedia() {
          if (!hasRun) {
             $.ajax ({  
@@ -49,11 +50,12 @@
                   console.log("sucessfully retrived media");
                   var totalLength = data.data.length;
                   var dict = {};
-                  var top = 5;
-                  // inserts photo index and #likes into a map, displays only top 5
+                  var recent = 5;
+                  var top = 3;
+                  // inserts photo index and #likes into a map, displays recent and top
                   for (var i = 0; i < totalLength; i++) {
                      dict[i] = data.data[i].likes["count"];
-                     if (i < top) {
+                     if (i < recent) {
                         if (data.data[i].type === "video") {
                            $("#recentpics").append("<div class='media'><a target='_blank' href='" + data.data[i].link + "'><video controls loop autoplay class='media' src='" + data.data[i].videos.low_resolution.url + "'></video></a></div>");
                         } else { 
@@ -70,7 +72,7 @@
                       return second[1] - first[1];
                   });
 
-                  items = items.slice(0, 3);
+                  items = items.slice(0, top);
 
                   console.log("Top photo processing complete" + items);
 
@@ -89,4 +91,22 @@
          return null;
          
       }
+      
+      // gets all users followers
+      function getFollowers() {
+         $.ajax ({  
+            type: "GET",
+            dataType: "jsonp",
+            cache: false,
+            url: "https://api.instagram.com/v1/users/self/followed-by?access_token=" + access_token,
+            success: function(data) {
+               console.log("sucessfully retrived followers");
+               //$('#follower').text(data.data.username);
+            }
+         });
+         return null;
+      }
+      
+      
+      
    })();
