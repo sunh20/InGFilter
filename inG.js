@@ -4,6 +4,7 @@
    window.onload = function() {
       document.getElementById("loadUser").onclick = getUserData;
       document.getElementById("loadMedia").onclick = getMedia;
+      document.getElementById("showRecent").onclick = showRecent(recent);
    };
 
    // gets a users access token, stores to access_token      
@@ -19,6 +20,10 @@
 
    // 2D array stores media data (link, likes, image or video, lowres.url)
    var media = []; 
+   
+   // number of recent/top photos to display. User can change
+   var recent = 5;
+   var top = 3;
 
    // gets users data (username, bio, follower counts, media, id, full name, profile pic)
    function getUserData() {
@@ -109,17 +114,13 @@
                console.log("sucessfully retrived media");
                var totalLength = data.data.length;
                for (var i = 0; i < totalLength; i++) {
-                  var link = data.data[i].link;             // link
-                  var likes = data.data[i].likes["count"];  // likes
-                  var type = data.data[i].type;             // image/video 
-                  var url;
-                  if (type === "video") {                   // url
-                     url = data.data[i].videos.low_resolution.url;                  
+                  if (data.data[i].type === "video") {
+                     media.push([data.data[i].link, data.data[i].likes["count"], "video", data.data[i].videos.low_resolution.url]);                 
                   } else { 
-                     url = data.data[i].images.low_resolution.url;
+                     media.push([data.data[i].link, data.data[i].likes["count"], "image", data.data[i].images.low_resolution.url]);
                   }
-                  media.push([link, likes, type, url]);
                }
+               console.log(media); // debugging
             }
          });
       }
@@ -129,8 +130,14 @@
    }
    
    // displays recent photos
-   function showRecent() {
-      
+   function showRecent(recent) {
+      for (var i = 0; i < recent; i++) {
+         if (media[i][2] === "video") {
+            $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><video controls loop autoplay class='media' src='" + media[i][3] + "'></video></a></div>");
+         } else { 
+            $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><img src='" + media[i][3] + "'></img></a></div>");
+         }
+      }
    }
    
    // displays top photos
