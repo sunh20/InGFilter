@@ -8,6 +8,8 @@
          document.getElementById("loadMedia").onclick = getMedia;
          document.getElementById("recent").onclick = showRecent(recent);
          document.getElementById("top").onclick = showTop(top);
+         document.getElementById("recent").style.display = 'none';
+         document.getElementById("top").style.display = 'none';
       };
 
       // gets a users access token, stores to access_token      
@@ -74,10 +76,12 @@
                      // }
                   }
                   document.getElementById("loadMedia").style.display = 'none';
+                  document.getElementById("recent").style.display = 'initial';
+                  document.getElementById("top").style.display = 'initial';
                }
             });
          }
-(         hasRun = true;
+         hasRun = true;
          return null;
          
       }
