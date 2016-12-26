@@ -6,7 +6,7 @@
       window.onload = function() {
          document.getElementById("loadUser").onclick = getUserData;
          document.getElementById("loadMedia").onclick = getMedia;
-         document.getElementById("recent").onclick = showRecent(recent);
+         // document.getElementById("recent").onclick = showRecent(recent);
          document.getElementById("top").onclick = showTop(top);
          document.getElementById("recent").style.display = 'none';
          document.getElementById("recentpics").style.display = 'none';
