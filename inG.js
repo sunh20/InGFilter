@@ -18,7 +18,7 @@
    var hasRun = false;
 
    // 2D array stores media data (link, likes, image or video, lowres.url)
-   var media; 
+   var media = []; 
 
    // gets users data (username, bio, follower counts, media, id, full name, profile pic)
    function getUserData() {
@@ -109,14 +109,16 @@
                console.log("sucessfully retrived media");
                var totalLength = data.data.length;
                for (var i = 0; i < totalLength; i++) {
-                  media[i][0] = data.data[i].link;             // link
-                  media[i][1] = data.data[i].likes["count"];   // likes
-                  media[i][2] = data.data[i].type;             // image/video 
-                  if (media[i][2] === "video") {
-                     media[i][3] = data.data[i].videos.low_resolution.url;                  
+                  var link = data.data[i].link;             // link
+                  var likes = data.data[i].likes["count"];  // likes
+                  var type = data.data[i].type;             // image/video 
+                  var url;
+                  if (type === "video") {                   // url
+                     url = data.data[i].videos.low_resolution.url;                  
                   } else { 
-                     media[i][3] = data.data[i].images.low_resolution.url;
+                     url = data.data[i].images.low_resolution.url;
                   }
+                  media.push([link, likes, type, url]);
                }
             }
          });
