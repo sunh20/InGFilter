@@ -131,6 +131,8 @@
    
    // displays recent photos
    function showRecent(recent) {
+      console.log(media);
+      /*
       for (var i = 0; i < recent; i++) {
          if (media[i][2] === "video") {
             $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><video controls loop autoplay class='media' src='" + media[i][3] + "'></video></a></div>");
@@ -138,6 +140,7 @@
             $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><img src='" + media[i][3] + "'></img></a></div>");
          }
       }
+      */
    }
    
    // displays top photos
