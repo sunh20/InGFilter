@@ -86,6 +86,7 @@
                   }
                   document.getElementById("loadMedia").style.display = 'none';
                   document.getElementById("recent").innerHTML = "Recent Photos";
+                  console.log("Top " + top + " Photos");
                   document.getElementById("top").innerHTML = "Top " + top + " Photos";
                }
             });
