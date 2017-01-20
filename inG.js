@@ -28,8 +28,8 @@
    var top = 3;
 
    // import charts
-   var Chart = require('chart.js');
-   var myChart = new Chart();
+   // var Chart = require('chart.js');
+   // var myChart = new Chart();
 
    // gets users data (username, bio, follower counts, media, id, full name, profile pic)
    function getUserData() {
