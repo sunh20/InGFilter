@@ -97,8 +97,7 @@
       // create new 2D array with index # and likes
       var items = []
       for (var i = 0; i < media.length; i++) {
-         items[i][0] = i;
-         items[i][1] = media[i][1];
+         items.push([i, media[i][1]]);
       }
       console.log(items);
 
