@@ -11,7 +11,8 @@
    var access_token = window.location.href.split("=")[1];
 
    if (access_token != null) {
-      console.log("Authentication complete");  
+      // console.log("Authentication complete");  
+      document.getElementById("authenticate") = "Authentication complete";
       console.log(access_token); // for debugging
    }
 
@@ -34,6 +35,8 @@
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
             console.log("sucessfully retrived user data");
+            console.log("VARIABLE DEBUGGING: " + access_token);
+
             $('#name').text(data.data.username);
             $('#bio').text(data.data.bio);
             $('#realName').text(data.data.full_name);
