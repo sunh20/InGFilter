@@ -91,8 +91,9 @@
             }
          }
          hasRunRecent = true;
+         document.getElementById("showRecent").innerHTML = "Hide Recent";
       } else {
-         toggleDisplay("recentpics");
+         toggleDisplay("recentpics", "showRecent", "Recent");
       }
       return null;      
    }
@@ -105,17 +106,15 @@
          for (var i = 0; i < media.length; i++) {
             items.push([i, media[i][1]]);
          }
-         console.log(items);
 
          // sort array by likes
          items.sort(function(first, second) {
              return second[1] - first[1];
          });
-         console.log(items);
 
          items = items.slice(0, top);
 
-         console.log("Top photo processing complete" + items);
+         console.log("Top photo processing complete");
 
          for (var i = 0; i < items.length; i++) {
             var index = items[i][0];
@@ -126,19 +125,23 @@
             }
          }
          hasRunTop = true;
+         document.getElementById("showTop").innerHTML = "Hide Top";
       } else {
-         toggleDisplay("topphoto");
+         toggleDisplay("topphoto", "showTop", "Top");
       }
       return null;
    }
 
-   function toggleDisplay(id) {
+   function toggleDisplay(id, button, type) {
       // get current state
       console.log("this component is " + document.getElementById(id).style.visibility);
       if (document.getElementById(id).style.visibility === "hidden") {
          document.getElementById(id).style.visibility = "visible";
+         document.getElementById(button).innerHTML = "Hide " + type;
+
       } else {
          document.getElementById(id).style.visibility = "hidden"
+         document.getElementById(button).innerHTML = "Show " + type;
       }
    }
    
