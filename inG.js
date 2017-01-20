@@ -3,7 +3,7 @@
 
    window.onload = function() {
       document.getElementById("loadUser").onclick = getUserData;
-      document.getElementById("loadMedia").onclick = getMedia;
+      document.getElementById("loadMedia").onclick = getMedia(media);
       document.getElementById("showRecent").onclick = showRecent(recent);
    };
 
@@ -34,8 +34,6 @@
          url: "https://api.instagram.com/v1/users/self/?access_token=" + access_token,
          success: function(data) {
             console.log("sucessfully retrived user data");
-            console.log("VARIABLE DEBUGGING: " + access_token);
-
             $('#name').text(data.data.username);
             $('#bio').text(data.data.bio);
             $('#realName').text(data.data.full_name);
@@ -45,7 +43,69 @@
       });
       return null;
    }
-   /*
+   
+   // gets all photos from user, creates 2D array of media (link, likes, image or video, lowres.url)
+   function getMedia(media) {
+      if (!hasRun) {
+         $.ajax ({  
+            type: "GET",
+            dataType: "jsonp",
+            cache: false,
+            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
+            success: function(data) {
+               console.log("sucessfully retrived media");
+               var totalLength = data.data.length;
+               for (var i = 0; i < totalLength; i++) {
+                  if (data.data[i].type === "video") {
+                     media.push([data.data[i].link, data.data[i].likes["count"], "video", data.data[i].videos.low_resolution.url]);                 
+                  } else { 
+                     media.push([data.data[i].link, data.data[i].likes["count"], "image", data.data[i].images.low_resolution.url]);
+                  }
+               }
+               // console.log(media); // debugging, everything is fine up to here
+            }
+         });
+      }
+      hasRun = true;
+      return null;
+
+   }
+   
+   // displays recent photos
+   function showRecent(recent) {
+      console.log("test media: " + media);
+      /*
+      for (var i = 0; i < recent; i++) {
+         if (media[i][2] === "video") {
+            $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><video controls loop autoplay class='media' src='" + media[i][3] + "'></video></a></div>");
+         } else { 
+            $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><img src='" + media[i][3] + "'></img></a></div>");
+         }
+      }
+      */
+   }
+   
+   // displays top photos
+   function showTop() {
+   }
+   
+   // gets all users followers
+   function getFollowers() {
+      $.ajax ({  
+         type: "GET",
+         dataType: "jsonp",
+         cache: false,
+         url: "https://api.instagram.com/v1/users/self/followed-by?access_token=" + access_token,
+         success: function(data) {
+            console.log("sucessfully retrived followers");
+            //$('#follower').text(data.data.username);
+         }
+      });
+      return null;
+   }
+
+
+      /*
    // gets all photos from user, shows recent and top photos
    function getMedia() {
       if (!hasRun) {
@@ -103,64 +163,5 @@
 
    }
    */
-   
-   // gets all photos from user, creates 2D array of media (link, likes, image or video, lowres.url)
-   function getMedia() {
-      if (!hasRun) {
-         $.ajax ({  
-            type: "GET",
-            dataType: "jsonp",
-            cache: false,
-            url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + access_token,
-            success: function(data) {
-               console.log("sucessfully retrived media");
-               var totalLength = data.data.length;
-               for (var i = 0; i < totalLength; i++) {
-                  if (data.data[i].type === "video") {
-                     media.push([data.data[i].link, data.data[i].likes["count"], "video", data.data[i].videos.low_resolution.url]);                 
-                  } else { 
-                     media.push([data.data[i].link, data.data[i].likes["count"], "image", data.data[i].images.low_resolution.url]);
-                  }
-               }
-               console.log(media); // debugging
-            }
-         });
-      }
-      hasRun = true;
-      return null;
 
-   }
-   
-   // displays recent photos
-   function showRecent(recent) {
-      console.log(media);
-      /*
-      for (var i = 0; i < recent; i++) {
-         if (media[i][2] === "video") {
-            $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><video controls loop autoplay class='media' src='" + media[i][3] + "'></video></a></div>");
-         } else { 
-            $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><img src='" + media[i][3] + "'></img></a></div>");
-         }
-      }
-      */
-   }
-   
-   // displays top photos
-   function showTop() {
-   }
-   
-   // gets all users followers
-   function getFollowers() {
-      $.ajax ({  
-         type: "GET",
-         dataType: "jsonp",
-         cache: false,
-         url: "https://api.instagram.com/v1/users/self/followed-by?access_token=" + access_token,
-         success: function(data) {
-            console.log("sucessfully retrived followers");
-            //$('#follower').text(data.data.username);
-         }
-      });
-      return null;
-   }
 })();
