@@ -95,7 +95,7 @@
    function showTop() {
       // create new 2D array with index # and likes
       var items = []
-      for (int i = 0; i < media.length; i++) {
+      for (var i = 0; i < media.length; i++) {
          items[i][0] = i;
          items[i][1] = media[i][1];
       }
