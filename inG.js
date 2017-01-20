@@ -74,6 +74,7 @@
          });
       }
       hasRun = true;
+      document.getElementById("loadMedia").style.display = "none";
       return media;
 
    }
@@ -89,7 +90,8 @@
             $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><img src='" + media[i][3] + "'></img></a></div>");
          }
       }
-      
+      document.getElementById("showRecent").style.display = "none";
+      return null;      
    }
    
    // displays top photos
@@ -119,6 +121,8 @@
             $("#topphoto").append("<div class='media'><a target='_blank' href='" + media[index][0] + "'><img src='" + media[index][3] + "'></img></a></div>");
          }
       }
+      document.getElementById("showtop").style.display = "none";
+      return null;
    }
    
    // gets all users followers
