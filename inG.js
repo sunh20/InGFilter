@@ -3,8 +3,8 @@
 
    window.onload = function() {
       document.getElementById("loadUser").onclick = getUserData;
-      document.getElementById("loadMedia").onclick = getMedia(media);
-      document.getElementById("showRecent").onclick = showRecent(recent);
+      document.getElementById("loadMedia").onclick = getMedia;
+      document.getElementById("showRecent").onclick = showRecent;
    };
 
    // gets a users access token, stores to access_token      
@@ -45,7 +45,7 @@
    }
    
    // gets all photos from user, creates 2D array of media (link, likes, image or video, lowres.url)
-   function getMedia(media) {
+   function getMedia() {
       if (!hasRun) {
          $.ajax ({  
             type: "GET",
@@ -72,7 +72,7 @@
    }
    
    // displays recent photos
-   function showRecent(recent) {
+   function showRecent() {
       console.log("test media: " + media);
       /*
       for (var i = 0; i < recent; i++) {
