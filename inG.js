@@ -91,7 +91,7 @@
             }
          }
          hasRunRecent = true;
-         document.getElementById("showRecent") = "Hide Recent";
+         document.getElementById("showRecent").innerHTML = "Hide Recent";
       } else {
          toggleDisplay("recentpics", "showRecent", "Recent");
       }
@@ -125,7 +125,7 @@
             }
          }
          hasRunTop = true;
-         document.getElementById("showTop") = "Hide Top";
+         document.getElementById("showTop").innerHTML = "Hide Top";
       } else {
          toggleDisplay("topphoto", "showTop", "Top");
       }
@@ -137,11 +137,11 @@
       console.log("this component is " + document.getElementById(id).style.visibility);
       if (document.getElementById(id).style.visibility === "hidden") {
          document.getElementById(id).style.visibility = "visible";
-         document.getElementById(button) = "Hide " + type;
+         document.getElementById(button).innerHTML = "Hide " + type;
 
       } else {
          document.getElementById(id).style.visibility = "hidden"
-         document.getElementById(button) = "Show " + type;
+         document.getElementById(button).innerHTML = "Show " + type;
       }
    }
    
