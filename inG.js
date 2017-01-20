@@ -68,7 +68,7 @@
                      media.push([data.data[i].link, data.data[i].likes["count"], "image", data.data[i].images.low_resolution.url]);
                   }
                }
-               console.log(media); // debugging, everything is fine up to here
+               // console.log(media); // debugging, everything is fine up to here
             }
          });
       }
@@ -79,8 +79,8 @@
    
    // displays recent photos
    function showRecent() {
-      console.log(media);
-      /*
+      // console.log(media); IT FINALLY WORKED OMG
+      
       for (var i = 0; i < recent; i++) {
          if (media[i][2] === "video") {
             $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><video controls loop autoplay class='media' src='" + media[i][3] + "'></video></a></div>");
@@ -88,7 +88,7 @@
             $("#recentpics").append("<div class='media'><a target='_blank' href='" + media[i][0] + "'><img src='" + media[i][3] + "'></img></a></div>");
          }
       }
-      */
+      
    }
    
    // displays top photos
