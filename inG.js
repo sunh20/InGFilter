@@ -79,7 +79,7 @@
    
    // displays recent photos
    function showRecent() {
-      console.log("test media: " + media);
+      console.log(media);
       /*
       for (var i = 0; i < recent; i++) {
          if (media[i][2] === "video") {
