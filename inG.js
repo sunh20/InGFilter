@@ -46,7 +46,7 @@
    
    // having issues with variable scopes
    function getMedia1() {
-      media = getMedia;
+      media = getMedia();
       return null;
    } 
 
