@@ -105,17 +105,15 @@
          for (var i = 0; i < media.length; i++) {
             items.push([i, media[i][1]]);
          }
-         console.log(items);
 
          // sort array by likes
          items.sort(function(first, second) {
              return second[1] - first[1];
          });
-         console.log(items);
 
          items = items.slice(0, top);
 
-         console.log("Top photo processing complete" + items);
+         console.log("Top photo processing complete");
 
          for (var i = 0; i < items.length; i++) {
             var index = items[i][0];
