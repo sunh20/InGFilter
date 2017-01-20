@@ -3,7 +3,7 @@
 
    window.onload = function() {
       document.getElementById("loadUser").onclick = getUserData;
-      document.getElementById("loadMedia").onclick = getMedia;
+      document.getElementById("loadMedia").onclick = getMedia1;
       document.getElementById("showRecent").onclick = showRecent;
    };
 
@@ -19,7 +19,7 @@
    var hasRun = false;
 
    // 2D array stores media data (link, likes, image or video, lowres.url)
-   var media = []; 
+   var media = [];
    
    // number of recent/top photos to display. User can change
    var recent = 5;
@@ -44,6 +44,12 @@
       return null;
    }
    
+   // having issues with variable scopes
+   function getMedia1() {
+      media = getMedia;
+      return null;
+   } 
+
    // gets all photos from user, creates 2D array of media (link, likes, image or video, lowres.url)
    function getMedia() {
       if (!hasRun) {
@@ -62,12 +68,12 @@
                      media.push([data.data[i].link, data.data[i].likes["count"], "image", data.data[i].images.low_resolution.url]);
                   }
                }
-               // console.log(media); // debugging, everything is fine up to here
+               console.log(media); // debugging, everything is fine up to here
             }
          });
       }
       hasRun = true;
-      return null;
+      return media;
 
    }
    
