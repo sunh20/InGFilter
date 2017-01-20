@@ -11,8 +11,7 @@
    var access_token = window.location.href.split("=")[1];
 
    if (access_token != null) {
-      // console.log("Authentication complete");  
-      document.getElementById("authenticate") = "Authentication complete";
+      console.log("Authentication complete");  
       console.log(access_token); // for debugging
    }
 
