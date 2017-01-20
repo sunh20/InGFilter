@@ -93,6 +93,32 @@
    
    // displays top photos
    function showTop() {
+      // create new 2D array with index # and likes
+      var items = []
+      for (int i = 0; i < media.length; i++) {
+         items[i][0] = i;
+         items[i][1] = media[i][1];
+      }
+      console.log(items);
+
+      // sort array by likes
+      items.sort(function(first, second) {
+          return second[1] - first[1];
+      });
+      console.log(items);
+
+      items = items.slice(0, top);
+
+      console.log("Top photo processing complete" + items);
+
+      for (var i = 0; i < items.length; i++) {
+         var index = items[i][0];
+         if (media[index][2] === "video") {
+            $("#topphoto").append("<div class='media'><a target='_blank' href='" + media[index][0] + "'><video controls loop autoplay class='media' src='" + media[index][3] + "'></video></a></div>");
+         } else { 
+            $("#topphoto").append("<div class='media'><a target='_blank' href='" + media[index][0] + "'><img src='" + media[index][3] + "'></img></a></div>");
+         }
+      }
    }
    
    // gets all users followers
