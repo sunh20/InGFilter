@@ -5,6 +5,7 @@
       document.getElementById("loadUser").onclick = getUserData;
       document.getElementById("loadMedia").onclick = getMedia1;
       document.getElementById("showRecent").onclick = showRecent;
+      document.getElementById("showTop").onclick = showTop;
    };
 
    // gets a users access token, stores to access_token      
